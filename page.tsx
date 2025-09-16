@@ -1,49 +1,61 @@
-import Hero from "@/components/Hero";
-import MarketLanding from "@/components/MarketLanding";
+// app/suite/page.tsx
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 
-export default function HomePage() {
+export default function SuiteLanding() {
   return (
-    <>
-      {/* Header comes from layout.tsx, so we just start with the hero */}
-      <Hero image="/hero.jpg" />
+    <main className="mx-auto max-w-7xl px-4 py-8 md:px-8">
+      <header className="mb-6">
+        <h1 className="text-xl font-semibold text-sky-900">Build Your Week</h1>
+        <p className="text-sky-600">Choose your area to continue.</p>
+      </header>
 
-      <MarketLanding />
-
-      {/* Bottom “Already booked?” rail — restored */}
-      <section className="mt-10 mb-14">
-        <div className="coastal-container max-w-[1120px]">
-          <div className="rounded-2xl border border-sky-100 bg-white/70 p-3 backdrop-blur shadow-sm">
-            <div className="mb-2 text-[13px] font-medium text-sky-900">
-              Already booked a home?
-            </div>
-            <div className="flex gap-2">
-              <input
-                placeholder="Enter your rental address"
-                className="h-10 w-full rounded-xl border border-sky-200 bg-white px-3 text-[14px] outline-none focus:ring-2 focus:ring-sky-200"
-              />
-              <select className="h-10 rounded-xl border border-sky-200 bg-white px-2 text-[14px]">
-                <option value="pcb">PCB</option>
-                <option value="30a">30A</option>
-              </select>
-              <Link
-                href="/suite"
-                className="grid h-10 place-items-center rounded-xl bg-sky-900 px-4 text-sm font-semibold text-white hover:bg-sky-950"
-              >
-                Open Suite
-              </Link>
+      <section className="grid grid-cols-1 gap-6 md:grid-cols-2">
+        {/* PCB card */}
+        <Link
+          href="/suite/pcb"
+          className="group block overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-[0_22px_70px_-30px_rgba(9,30,66,0.18)] hover:shadow-[0_30px_90px_-40px_rgba(9,30,66,0.22)] transition-shadow"
+        >
+          <div className="relative aspect-[16/9]">
+            <Image
+              src="/hero-pcb.jpg"
+              alt="Panama City Beach"
+              fill
+              priority
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          </div>
+          <div className="p-4">
+            <div className="text-sky-900 font-semibold">Panama City Beach</div>
+            <div className="text-sm text-sky-600">
+              Chairs, Water Sports, Bonfires & Photography
             </div>
           </div>
-        </div>
-      </section>
+        </Link>
 
-      {/* Footer stays pinned to the bottom */}
-      <footer className="mt-10 border-t border-sky-100 py-10">
-        <div className="coastal-container text-[12px] text-sky-700/80">
-          © {new Date().getFullYear()} Coastal Beach Company · Public Beaches
-          (30A) · PCB · Destin
-        </div>
-      </footer>
-    </>
+        {/* 30A card */}
+        <Link
+          href="/suite/30a"
+          className="group block overflow-hidden rounded-2xl border border-sky-100 bg-white shadow-[0_22px_70px_-30px_rgba(9,30,66,0.18)] hover:shadow-[0_30px_90px_-40px_rgba(9,30,66,0.22)] transition-shadow"
+        >
+          <div className="relative aspect-[16/9]">
+            <Image
+              src="/hero-30a.jpg"
+              alt="30A / South Walton"
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            />
+          </div>
+          <div className="p-4">
+            <div className="text-sky-900 font-semibold">30A</div>
+            <div className="text-sm text-sky-600">
+              Amenity Suite with home selection
+            </div>
+          </div>
+        </Link>
+      </section>
+    </main>
   );
 }
